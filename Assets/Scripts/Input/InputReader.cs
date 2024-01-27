@@ -48,10 +48,10 @@ public class InputReader : MonoBehaviour, PlayerInput.IGameplayActions
     
     public void OnShoot(InputAction.CallbackContext context)
     {
-        
+        if (context.performed)
+            ShootEvent();
     }
-
-
+    
     private void FixedUpdate()
     {
         MovementEvent(_currentMovementInput);
