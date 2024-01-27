@@ -1,13 +1,9 @@
 ﻿using UnityEngine;
 
-public class AmmoItem : MonoBehaviour,ICollectable
+public class AmmoItem : Item,ICollectable
 {
-    [SerializeField] 
-    private string type;
-    
-    
-    public void Collect()
+    public Item Collect()
     {
-           
+        return this;
     }
 }
