@@ -9,7 +9,7 @@ public abstract class WeaponBase : MonoBehaviour
     [SerializeField] 
     private float _fireCooldown;
     
-    private WeaponAmmoBase _currentAmmo;
+    protected WeaponAmmoBase _currentAmmo;
     
     private float _fireTimer;
 
