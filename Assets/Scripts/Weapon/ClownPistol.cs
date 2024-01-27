@@ -8,12 +8,18 @@ public class ClownPistol : WeaponBase
 
     private void OnEnable()
     {
-       _inputReader.ShootEvent += OnShoot;
+       _inputReader.ShootEvent += Fire;
     }
 
     private void OnDisable()
     {
-        _inputReader.ShootEvent -= OnShoot;
+        _inputReader.ShootEvent -= Fire;
+    }
+
+    private void Awake()
+    {
+        OnWeaponFired += OnShoot;
+        _currentAmmo = new ClownPistolAmmo(2);
     }
 
     private void OnShoot()

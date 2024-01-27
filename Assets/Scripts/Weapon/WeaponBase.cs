@@ -2,7 +2,6 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using Weapon;
 
 public abstract class WeaponBase : MonoBehaviour
 {
@@ -24,7 +23,10 @@ public abstract class WeaponBase : MonoBehaviour
 
     public void Fire()
     {
-        _fireTimer = 0;
-        OnWeaponFired();
+        if (_fireTimer > _fireCooldown)
+        {
+            _fireTimer = 0;
+            OnWeaponFired();
+        }
     }
 }
