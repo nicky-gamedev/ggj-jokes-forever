@@ -15,7 +15,6 @@ public class CharacterMovement : MonoBehaviour
 
     private void OnEnable()
     {
-        _inputReader.Init();
         _inputReader.MovementEvent += ProcessMovement;
         
     }

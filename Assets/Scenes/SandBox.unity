@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.18028378, g: 0.22571412, b: 0.30692285, a: 1}
+  m_IndirectSpecularColor: {r: 0.18028352, g: 0.22571376, b: 0.30692244, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -221,6 +221,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 204605298}
+  - component: {fileID: 204605300}
+  - component: {fileID: 204605299}
   m_Layer: 6
   m_Name: Wepon
   m_TagString: Untagged
@@ -244,6 +246,38 @@ Transform:
   - {fileID: 1024355061}
   m_Father: {fileID: 1826251969}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &204605299
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 204605297}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 76db655fb7a24059b582025b6a0e46b7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _fireCooldown: 1
+  _projectileManager: {fileID: 204605300}
+  _inputReader: {fileID: 1376255005}
+--- !u!114 &204605300
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 204605297}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 673520b544314ed59a3cf0c0add72a78, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _projectilePrefab: {fileID: 1271797907941671689, guid: ee9c1223d0af3eb418bbe8415e7b6dac,
+    type: 3}
+  defaultSize: 10
+  maxSize: 100
+  playerTransform: {fileID: 1826251969}
 --- !u!43 &263374579
 Mesh:
   m_ObjectHideFlags: 0
