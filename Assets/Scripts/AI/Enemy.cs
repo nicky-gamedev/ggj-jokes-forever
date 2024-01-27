@@ -37,4 +37,9 @@ public class Enemy : MonoBehaviour
     {
         _agent.SetDestination(_character.transform.position);
     }
+
+    public bool IsNavigating()
+    {
+        return _agent.hasPath;
+    }
 }

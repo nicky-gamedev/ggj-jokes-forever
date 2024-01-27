@@ -1,11 +1,12 @@
 ﻿using UnityEngine;
 
 [CreateAssetMenu(fileName = "EnemyStateMachine", menuName = "Custom/StateMachine/Enemy", order = 0)]
-public class EnemyStateMachine : ScriptableObject
+public class EnemyStateMachine : MonoBehaviour
 {
     private string previousState;
     private float hurt_timeToLeave;
     private float walk_timeToLeave;
+    private bool _aggro;
     [SerializeField] private float hurt_cooldownTime;
     [SerializeField] private float distanceToAggro;
     [SerializeField] private float attackingDistance;
@@ -83,9 +84,15 @@ public class EnemyStateMachine : ScriptableObject
         }
 
         float distance = enemy.CheckPlayerDistance();
-        if (distance <= distanceToAggro)
+        if (distance <= distanceToAggro && !_aggro)
         {
             previousState = "IDLE";
+            enemy.NavigateToPlayer();
+            _aggro = true;
+            return "WALK";
+        }
+        else if (_aggro && !enemy.IsNavigating())
+        {
             enemy.NavigateToPlayer();
             return "WALK";
         }

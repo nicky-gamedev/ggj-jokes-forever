@@ -10192,6 +10192,7 @@ GameObject:
   - component: {fileID: 1336631523}
   - component: {fileID: 1336631522}
   - component: {fileID: 1336631527}
+  - component: {fileID: 1336631528}
   m_Layer: 0
   m_Name: Enemy
   m_TagString: Untagged
@@ -10212,7 +10213,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _character: {fileID: 3311657499926228574}
-  _enemyStateMachine: {fileID: 11400000, guid: 796ba92d8f9d4be49a4bd46adb56c7e5, type: 2}
+  _enemyStateMachine: {fileID: 1336631528}
   _agent: {fileID: 1336631527}
   gotHurt: 0
 --- !u!136 &1336631523
@@ -10276,6 +10277,21 @@ NavMeshAgent:
   m_BaseOffset: 1
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
+--- !u!114 &1336631528
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1336631521}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a4939793a8334415a91e49d9f929aea1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hurt_cooldownTime: 2
+  distanceToAggro: 10
+  attackingDistance: 1
 --- !u!114 &1376255005 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 7259332121322415739, guid: f4392d102b1f24c44bb197f12c4048d8,
