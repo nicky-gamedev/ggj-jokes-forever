@@ -8,18 +8,25 @@ public class ClownPistol : WeaponBase
 
     private void OnEnable()
     {
-       _inputReader.ShootEvent += OnShoot;
+       _inputReader.ShootEvent += Fire;
     }
 
     private void OnDisable()
     {
-        _inputReader.ShootEvent -= OnShoot;
+        _inputReader.ShootEvent -= Fire;
+    }
+
+    private void Awake()
+    {
+        OnWeaponFired += OnShoot;
+        CurrentAmmo = new ClownPistolAmmo(2);
     }
 
     private void OnShoot()
     {
-        if (_currentAmmo.HasAmmo)
+        if (CurrentAmmo.HasAmmo)
         {
+            CurrentAmmo.AddAmmo(-1);
             _projectileManager.CreateProjectile();
         }
     }

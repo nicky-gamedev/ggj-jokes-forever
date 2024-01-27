@@ -2,18 +2,17 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using Weapon;
 
 public abstract class WeaponBase : MonoBehaviour
 {
     [SerializeField] 
     private float _fireCooldown;
     
-    protected WeaponAmmoBase _currentAmmo;
+    public WeaponAmmoBase CurrentAmmo;
     
     private float _fireTimer;
 
-    private bool CanFire => _currentAmmo is { HasAmmo: true } && _fireTimer >= _fireCooldown;
+    private bool CanFire => CurrentAmmo is { HasAmmo: true } && _fireTimer >= _fireCooldown;
     
     public event Action OnWeaponFired = delegate {};
 
@@ -24,7 +23,10 @@ public abstract class WeaponBase : MonoBehaviour
 
     public void Fire()
     {
-        _fireTimer = 0;
-        OnWeaponFired();
+        if (_fireTimer > _fireCooldown)
+        {
+            _fireTimer = 0;
+            OnWeaponFired();
+        }
     }
 }
