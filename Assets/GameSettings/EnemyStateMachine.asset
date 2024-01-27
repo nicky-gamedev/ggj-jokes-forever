@@ -13,3 +13,5 @@ MonoBehaviour:
   m_Name: EnemyStateMachine
   m_EditorClassIdentifier: 
   hurt_cooldownTime: 2
+  distanceToAggro: 10
+  attackingDistance: 1
