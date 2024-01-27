@@ -8,11 +8,11 @@ public abstract class WeaponBase : MonoBehaviour
     [SerializeField] 
     private float _fireCooldown;
     
-    protected WeaponAmmoBase _currentAmmo;
+    public WeaponAmmoBase CurrentAmmo;
     
     private float _fireTimer;
 
-    private bool CanFire => _currentAmmo is { HasAmmo: true } && _fireTimer >= _fireCooldown;
+    private bool CanFire => CurrentAmmo is { HasAmmo: true } && _fireTimer >= _fireCooldown;
     
     public event Action OnWeaponFired = delegate {};
 

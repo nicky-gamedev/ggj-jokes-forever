@@ -19,13 +19,14 @@ public class ClownPistol : WeaponBase
     private void Awake()
     {
         OnWeaponFired += OnShoot;
-        _currentAmmo = new ClownPistolAmmo(2);
+        CurrentAmmo = new ClownPistolAmmo(2);
     }
 
     private void OnShoot()
     {
-        if (_currentAmmo.HasAmmo)
+        if (CurrentAmmo.HasAmmo)
         {
+            CurrentAmmo.AddAmmo(-1);
             _projectileManager.CreateProjectile();
         }
     }

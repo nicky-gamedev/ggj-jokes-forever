@@ -5,6 +5,7 @@ using UnityEngine;
 public class CharacterInteraction : MonoBehaviour
 {
     private CharacterController _characterController;
+    
     private void OnEnable()
     {
         _characterController = GetComponent<CharacterController>();
