@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 [RequireComponent(typeof(InputReader))]
 public class CharacterMovement : MonoBehaviour
@@ -16,14 +17,19 @@ public class CharacterMovement : MonoBehaviour
     {
         _inputReader.Init();
         _inputReader.MovementEvent += ProcessMovement;
-        Cursor.visible = false;
+        
     }
 
     private void OnDisable()
     {
         _inputReader.MovementEvent -= ProcessMovement;
     }
-    
+
+    private void Start()
+    {
+        Cursor.visible = false;
+    }
+
     private void ProcessMovement(Vector2 movementInput)
     {
         Vector3 moveDirection = Vector3.zero;
