@@ -5,6 +5,8 @@ public class CharacterMovement : MonoBehaviour
     [SerializeField] 
     private InputReader _inputReader;
     [SerializeField] 
+    private Camera _cam;
+    [SerializeField] 
     private CharacterController _controller;
 
     [SerializeField] 
@@ -14,24 +16,22 @@ public class CharacterMovement : MonoBehaviour
     {
         _inputReader.Init();
         _inputReader.MovementEvent += ProcessMovement;
+        Cursor.visible = false;
     }
 
     private void OnDisable()
     {
         _inputReader.MovementEvent -= ProcessMovement;
     }
-
-    private void Update()
-    {
-        
-    }
-
+    
     private void ProcessMovement(Vector2 movementInput)
     {
         Vector3 moveDirection = Vector3.zero;
         moveDirection.x = movementInput.x;
         moveDirection.z = movementInput.y;
-        var motion = transform.TransformDirection(moveDirection) * _speed * Time.deltaTime;
+        moveDirection = _cam.transform.forward * moveDirection.z + _cam.transform.right * movementInput.x;
+        var motion = (moveDirection) * _speed * Time.deltaTime;
+        
         _controller.Move(motion);
     }
 }

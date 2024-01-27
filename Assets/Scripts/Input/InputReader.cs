@@ -2,10 +2,9 @@ using System;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-public class InputReader : MonoBehaviour,PlayerInput.IGameplayActions
+public class InputReader : MonoBehaviour, PlayerInput.IGameplayActions
 {
     private PlayerInput _playerInput;
-    private PlayerInput.GameplayActions _gameplayActions;
 
     public event Action<Vector2> MovementEvent = delegate {};
     public event Action<Vector2> LookEvent = delegate {}; 
@@ -22,11 +21,8 @@ public class InputReader : MonoBehaviour,PlayerInput.IGameplayActions
 
     public void Init()
     {
-        if (_playerInput == null)
-        {
-            _playerInput = new PlayerInput();
-            _playerInput.Gameplay.SetCallbacks(this);
-        }
+        _playerInput ??= new PlayerInput();
+        _playerInput.Gameplay.SetCallbacks(this);
         EnableInput();
     }
     
