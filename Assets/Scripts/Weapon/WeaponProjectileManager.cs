@@ -3,11 +3,12 @@ using UnityEngine;
 
 public class WeaponProjectileManager : MonoBehaviour
 {
-    [SerializeField] private GameObjectPool _objectPool;
+    private GameObjectPool _objectPool;
     [SerializeField] private GameObject _projectilePrefab;
     [SerializeField] private int defaultSize;
     [SerializeField] private int maxSize;
-    [SerializeField] private Transform playerTransform;
+    [SerializeField] private Vector3 offset;
+    [SerializeField] private WeaponBase _weaponBase;
 
     private void Awake()
     {
@@ -17,6 +18,11 @@ public class WeaponProjectileManager : MonoBehaviour
     public void CreateProjectile()
     {
         WeaponProjectile projectile = _objectPool.Get().GetComponent<WeaponProjectile>();
-        projectile.Init(playerTransform.forward, playerTransform.position);
+        projectile.Init(Camera.main.transform.forward, Camera.main.ViewportToWorldPoint(Vector3.one / 2f), offset);
+        projectile.OnProjectileHit += obj =>
+        {
+            if (projectile.gameObject.activeSelf)
+                _objectPool.Release(projectile.gameObject);
+        };
     }
 }

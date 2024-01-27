@@ -12,12 +12,15 @@ public class ClownPistol : WeaponBase
     }
 
     private void OnDisable()
-    { ;
+    {
         _inputReader.ShootEvent -= OnShoot;
     }
 
     private void OnShoot()
     {
-        _projectileManager.CreateProjectile();
+        if (_currentAmmo.HasAmmo)
+        {
+            _projectileManager.CreateProjectile();
+        }
     }
 }

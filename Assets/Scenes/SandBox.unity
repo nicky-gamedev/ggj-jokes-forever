@@ -367,7 +367,7 @@ MonoBehaviour:
     type: 3}
   defaultSize: 10
   maxSize: 100
-  playerTransform: {fileID: 1826251969}
+  offset: {x: 0, y: 0, z: 2}
 --- !u!43 &263374579
 Mesh:
   m_ObjectHideFlags: 0

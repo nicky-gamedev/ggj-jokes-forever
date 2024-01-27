@@ -7,15 +7,15 @@ public class WeaponProjectile : MonoBehaviour
     [SerializeField] private float speed;
     
     public event Action<GameObject> OnProjectileHit = delegate {  };
-    public void Init(Vector3 forward, Vector3 position)
+    public void Init(Vector3 forward, Vector3 position, Vector3 offset)
     {
-        transform.forward = forward;
+        transform.LookAt(forward);
         transform.position = position;
     }
 
     private void FixedUpdate()
     {
-        rb.velocity = Vector3.forward * speed * Time.deltaTime;
+        rb.velocity = transform.forward * speed * Time.deltaTime;
     }
 
     private void OnCollisionEnter(Collision other)
