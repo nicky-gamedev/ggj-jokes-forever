@@ -1,0 +1,68 @@
+using System;
+using UnityEngine;
+using UnityEngine.InputSystem;
+
+public class InputReader : MonoBehaviour,PlayerInput.IGameplayActions
+{
+    private PlayerInput _playerInput;
+    private PlayerInput.GameplayActions _gameplayActions;
+
+    public event Action<Vector2> MovementEvent = delegate {};
+    public event Action<Vector2> LookEvent = delegate {}; 
+    public event Action InteractionEvent = delegate {};
+    public event Action ShootEvent = delegate {};
+
+    private Vector2 _currentMovementInput;
+    private Vector2 _lookDirectionInput;
+
+    private void Awake()
+    {
+        Init();
+    }
+
+    public void Init()
+    {
+        if (_playerInput == null)
+        {
+            _playerInput = new PlayerInput();
+            _playerInput.Gameplay.SetCallbacks(this);
+        }
+        EnableInput();
+    }
+    
+    public void EnableInput()
+    {
+        _playerInput.Gameplay.Enable();    
+    }
+
+    public void DisableInput()
+    {
+        _playerInput.Gameplay.Disable();
+    }
+    
+    public void OnMovement(InputAction.CallbackContext context)
+    {
+        _currentMovementInput = context.ReadValue<Vector2>();
+    }
+
+    public void OnLook(InputAction.CallbackContext context)
+    {
+        _lookDirectionInput = context.ReadValue<Vector2>();
+    }
+    
+    public void OnShoot(InputAction.CallbackContext context)
+    {
+        
+    }
+
+
+    private void FixedUpdate()
+    {
+        MovementEvent(_currentMovementInput);
+    }
+
+    private void LateUpdate()
+    {
+        LookEvent(_lookDirectionInput);
+    }
+}
