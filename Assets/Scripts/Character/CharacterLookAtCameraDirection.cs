@@ -6,7 +6,7 @@ public class CharacterLookAtCameraDirection : MonoBehaviour
     [SerializeField] 
     private Camera _cam;
     
-    private void FixedUpdate()
+    private void Update()
     {
         ProcessLook();
     }
@@ -14,6 +14,6 @@ public class CharacterLookAtCameraDirection : MonoBehaviour
     private void ProcessLook()
     {
         transform.rotation = Quaternion.LookRotation(_cam.transform.forward, _cam.transform.up);
-        transform.eulerAngles = new Vector3(0, transform.eulerAngles.y, transform.eulerAngles.z);
+        transform.eulerAngles = new Vector3(0, transform.eulerAngles.y, 0);
     }
 }
