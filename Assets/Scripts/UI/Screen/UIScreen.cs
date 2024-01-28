@@ -7,23 +7,20 @@ public abstract class UIScreen<T> : MonoBehaviour, IUIScreen where T: IScreenCon
     protected T Controller { get; set; }
     private Action OnShowCompletedCallback { get; set; }
 
-    public void Init<T>(T controller)
+    public virtual void Init<T>(T controller)
     {
         CanvasGroup = GetComponent<CanvasGroup>();
         Controller = new();
     }
 
-    public void Show(T controller, Action onShowCompletedCallback = null)
+    public void Show(Action onShowCompletedCallback = null)
     {
-        Controller = controller;
         OnShowCompletedCallback = onShowCompletedCallback;
         StartShow();
     }
     
     public void StartShow()
     {
-        Debug.Log($"Mostrando {Key}");
-        Debug.Log($"Controller is {Controller.GetType()}");
     }
     
 
