@@ -34,7 +34,7 @@ public class CinemachinePOVExtension : CinemachineExtension
 
     protected override void Awake()
     {
-        
+        AudioManager.Instance.PlayLoop("theme_song", 1);
         _currentLookDirection = transform.localRotation.eulerAngles;
         base.Awake();
     }
