@@ -1,15 +1,18 @@
 ﻿using UnityEngine;
+using UnityEngine.Serialization;
 
 [CreateAssetMenu(fileName = "EnemyStateMachine", menuName = "Custom/StateMachine/Enemy", order = 0)]
 public class EnemyStateMachine : MonoBehaviour
 {
-    private string previousState;
-    private float hurt_timeToLeave;
-    private float walk_timeToLeave;
+    [SerializeField] private string previousState;
+    private float _hurtTimeToLeave;
+    private float nextAttackingTime;
+    [SerializeField] private float attackingCooldown;
     private bool _aggro;
-    [SerializeField] private float hurt_cooldownTime;
+    [SerializeField] private float hurtCooldownTime;
     [SerializeField] private float distanceToAggro;
     [SerializeField] private float attackingDistance;
+    
     [SerializeField] private bool hasMeleeAttack;
     [SerializeField] private bool hasProjectileAttack;
     
@@ -27,7 +30,7 @@ public class EnemyStateMachine : MonoBehaviour
     {
         if (enemy.gotHurt)
         {
-            hurt_timeToLeave = Time.time + hurt_cooldownTime;
+            _hurtTimeToLeave = Time.time + hurtCooldownTime;
             previousState = "WALK";
             enemy.gotHurt = false;
             return "HURT";
@@ -47,20 +50,26 @@ public class EnemyStateMachine : MonoBehaviour
     {
         if (enemy.gotHurt)
         {
-            hurt_timeToLeave = Time.time + hurt_cooldownTime;
+            _hurtTimeToLeave = Time.time + hurtCooldownTime;
             previousState = "ATTACK";
             enemy.gotHurt = false;
             return "HURT";
         }
-
-        if (hasMeleeAttack)
+        
+        enemy.CancelPath();
+        if (nextAttackingTime <= Time.time)
         {
-            enemy.Melee.MeleeAttack();
+            if (hasMeleeAttack)
+            {
+                enemy.Melee.MeleeAttack();
+            }
+            else if (hasProjectileAttack)
+            {
+                enemy.ProjectileManager.CreateProjectile(enemy.transform.forward, enemy.transform.position);
+            }
+            nextAttackingTime = attackingCooldown + Time.time;
         }
-        else if (hasProjectileAttack)
-        {
-            enemy.ProjectileManager.CreateProjectile(enemy.transform.forward, enemy.transform.position);
-        }
+        
         
         float distance = enemy.CheckPlayerDistance();
         if (distance >= attackingDistance)
@@ -74,10 +83,11 @@ public class EnemyStateMachine : MonoBehaviour
 
     private string UpdateState_HURT(Enemy enemy)
     {
-        if (Time.time >= hurt_timeToLeave)
+        if (Time.time >= _hurtTimeToLeave)
         {
+            var hold = previousState;
             previousState = "HURT";
-            return previousState;
+            return hold;
         }
         return "HURT";
     }
@@ -86,7 +96,7 @@ public class EnemyStateMachine : MonoBehaviour
     {
         if (enemy.gotHurt)
         {
-            hurt_timeToLeave = Time.time + hurt_cooldownTime;
+            _hurtTimeToLeave = Time.time + hurtCooldownTime;
             previousState = "IDLE";
             enemy.gotHurt = false;
             return "HURT";

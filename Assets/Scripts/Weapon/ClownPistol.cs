@@ -17,6 +17,7 @@ public class ClownPistol : WeaponBase
        _inputReader.ShootEvent += Fire;
        _inputReader.MeleeEvent += MeleeAttack;
        _projectileManager.SetDamage(_damage);
+       _meleeManager.SetDamage(_damage);
     }
 
     private void OnDisable()
