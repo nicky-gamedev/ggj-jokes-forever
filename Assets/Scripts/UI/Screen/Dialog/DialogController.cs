@@ -55,7 +55,7 @@ public class DialogController : IScreenController
     {
         Debug.Log(currentStep);
         bool _isDialogAlreadyRead = _narrativeDialogRead.Contains(dialogKey);
-        bool _isTheSameDialogKey = _currentDialog.Count > 0 && _currentDialog[currentStep].Key == _dialogsByKey[dialogKey][currentStep].Key;
+        bool _isTheSameDialogKey = _currentDialog.Count > 0 && currentStep < _currentDialog.Count && currentStep < _dialogsByKey[dialogKey].Count && _currentDialog[currentStep].Key == _dialogsByKey[dialogKey][currentStep].Key;
         if (_isDialogAlreadyRead ||  _isTheSameDialogKey)
         {
             return null;

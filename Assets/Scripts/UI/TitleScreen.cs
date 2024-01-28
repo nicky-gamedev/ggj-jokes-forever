@@ -24,6 +24,7 @@ public class TitleScreen : MonoBehaviour
        _canvasGroup.interactable = true;
        _canvasGroup.blocksRaycasts = true;
        _text.text = "GAME OVER";
+       Cursor.visible = true;
    }
 
    public void OnVictory()
@@ -32,5 +33,6 @@ public class TitleScreen : MonoBehaviour
        _canvasGroup.interactable = true;
        _canvasGroup.blocksRaycasts = true;
        _text.text = "CONGRATULATIONS. DEMO COMPLETED";
+       Cursor.visible = true;
    }
 }
