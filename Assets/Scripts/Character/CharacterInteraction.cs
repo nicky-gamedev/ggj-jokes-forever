@@ -36,6 +36,6 @@ public class CharacterInteraction : MonoBehaviour
 
     private void CollectItem(Item item)
     {
-        Debug.Log($"COLETEI O ITEM {item}");
+        Destroy(item.gameObject);
     }
 }
