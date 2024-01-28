@@ -10,6 +10,8 @@ public class EnemyStateMachine : MonoBehaviour
     [SerializeField] private float hurt_cooldownTime;
     [SerializeField] private float distanceToAggro;
     [SerializeField] private float attackingDistance;
+    [SerializeField] private bool hasMeleeAttack;
+    [SerializeField] private bool hasProjectileAttack;
     
 
     public string UpdateState(string state, Enemy enemy)
@@ -50,8 +52,15 @@ public class EnemyStateMachine : MonoBehaviour
             enemy.gotHurt = false;
             return "HURT";
         }
-        
-        //attacks
+
+        if (hasMeleeAttack)
+        {
+            enemy.Melee.MeleeAttack();
+        }
+        else if (hasProjectileAttack)
+        {
+            enemy.ProjectileManager.CreateProjectile(enemy.transform.forward, enemy.transform.position);
+        }
         
         float distance = enemy.CheckPlayerDistance();
         if (distance >= attackingDistance)

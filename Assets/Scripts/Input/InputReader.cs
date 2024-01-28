@@ -10,6 +10,7 @@ public class InputReader : MonoBehaviour, PlayerInput.IGameplayActions
     public event Action<Vector2> LookEvent = delegate {}; 
     public event Action InteractionEvent = delegate {};
     public event Action ShootEvent = delegate {};
+    public event Action MeleeEvent = delegate {};
 
     private Vector2 _currentMovementInput;
     private Vector2 _lookDirectionInput;
@@ -45,7 +46,13 @@ public class InputReader : MonoBehaviour, PlayerInput.IGameplayActions
     {
         _lookDirectionInput = context.ReadValue<Vector2>();
     }
-    
+
+    public void OnMelee(InputAction.CallbackContext context)
+    {
+        if (context.performed)
+            MeleeEvent();
+    }
+
     public void OnShoot(InputAction.CallbackContext context)
     {
         if (context.performed)

@@ -8,9 +8,12 @@ public class Enemy : MonoBehaviour
     [SerializeField] private CharacterController _character;
     [SerializeField] private EnemyStateMachine _enemyStateMachine;
     [SerializeField] private NavMeshAgent _agent;
+    
     private string _state;
     public bool gotHurt;
-
+    public WeaponProjectileManager ProjectileManager;
+    public Melee Melee;
+    
     private void Update()
     {
          _state = _enemyStateMachine.UpdateState(_state, this);
