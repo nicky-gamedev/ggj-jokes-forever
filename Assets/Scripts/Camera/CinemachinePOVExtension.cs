@@ -34,9 +34,17 @@ public class CinemachinePOVExtension : CinemachineExtension
 
     protected override void Awake()
     {
-        AudioManager.Instance.PlayLoop("theme_song", 1);
         _currentLookDirection = transform.localRotation.eulerAngles;
         base.Awake();
+    }
+    private void Start()
+    {
+        AudioManager.Instance.PlayLoop("theme_song", 1);
+    }
+
+    public void Update()
+    {
+        Cursor.visible = false;
     }
 
     protected override void PostPipelineStageCallback(CinemachineVirtualCameraBase vcam, CinemachineCore.Stage stage, ref CameraState state, float deltaTime)

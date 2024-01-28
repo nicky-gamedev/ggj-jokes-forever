@@ -9,8 +9,9 @@ public class WeaponProjectileManager : MonoBehaviour
     [SerializeField] private int defaultSize;
     [SerializeField] private int maxSize;
     [SerializeField] private Vector3 offset;
+    [SerializeField] private GameObject _shootParticle;
 
-    
+
 
     private void Awake()
     {
@@ -32,8 +33,11 @@ public class WeaponProjectileManager : MonoBehaviour
                 _objectPool.Release(projectile.gameObject);
             if (obj.TryGetComponent(out Health health))
             {
+                var particleObj = Instantiate(_shootParticle, obj.transform.position, Quaternion.identity);
+                Destroy(particleObj.gameObject,0.5f);
                 health.SubtractHealth(_damage);
             }
         };
     }
+    
 }
