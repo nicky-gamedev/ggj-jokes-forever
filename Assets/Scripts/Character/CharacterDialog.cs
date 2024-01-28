@@ -62,10 +62,12 @@ public class CharacterDialog : MonoBehaviour
             if (_currentTimeToSpeakAgain >= _timeToSpeak)
             {
                 ActivateRandomDialog();
+                
             }
         }
 
         if (_currentJokes <= _jokesToGainAmmo) return;
+        AudioManager.Instance.PlayRandom("laugh_",0);
         _weaponBase.CurrentAmmo.AddAmmo(_ammoGain);
         _currentJokes = 0;
     }
