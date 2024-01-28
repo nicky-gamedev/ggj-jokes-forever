@@ -13,7 +13,6 @@ public class CharacterInteraction : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        Debug.Log("TRIGGER DETECTION");
         Item item = other.GetComponent<Item>();
         
         if (item != null)
