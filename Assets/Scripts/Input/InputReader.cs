@@ -8,7 +8,7 @@ public class InputReader : MonoBehaviour, PlayerInput.IGameplayActions
 
     public event Action<Vector2> MovementEvent = delegate {};
     public event Action<Vector2> LookEvent = delegate {}; 
-    public event Action InteractionEvent = delegate {};
+    public event Action PieEvent = delegate {};
     public event Action ShootEvent = delegate {};
     public event Action MeleeEvent = delegate {};
 
@@ -51,6 +51,12 @@ public class InputReader : MonoBehaviour, PlayerInput.IGameplayActions
     {
         if (context.performed)
             MeleeEvent();
+    }
+
+    public void OnPie(InputAction.CallbackContext context)
+    {
+        if (context.performed)
+            PieEvent();
     }
 
     public void OnShoot(InputAction.CallbackContext context)
