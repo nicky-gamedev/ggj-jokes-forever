@@ -9,12 +9,6 @@ public class GameManager : MonoBehaviour
     void Start()
     {
         _screenManager.GetScreen<DialogScreen>().Show();
-        _screenManager.GetScreen<DialogScreen>().ShowCharacterRandomDialog();
     }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+    
 }

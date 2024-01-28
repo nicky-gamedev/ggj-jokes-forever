@@ -8,8 +8,20 @@ public class Enemy : MonoBehaviour
     [SerializeField] private CharacterController _character;
     [SerializeField] private EnemyStateMachine _enemyStateMachine;
     [SerializeField] private NavMeshAgent _agent;
-    private string _state;
+    [SerializeField] private Health _health;
+    
+    [SerializeField] private string _state;
     public bool gotHurt;
+    public WeaponProjectileManager ProjectileManager;
+    public Melee Melee;
+
+    private void Awake()
+    {
+        _health.OnHealthDepleted += () =>
+        {
+            Destroy(this.gameObject);
+        };
+    }
 
     private void Update()
     {
@@ -41,5 +53,15 @@ public class Enemy : MonoBehaviour
     public bool IsNavigating()
     {
         return _agent.hasPath;
+    }
+
+    public void CancelPath()
+    {
+        _agent.ResetPath();
+    }
+
+    private void OnDestroy()
+    {
+        _health.OnHealthDepleted -= () => { Destroy(this.gameObject); };
     }
 }

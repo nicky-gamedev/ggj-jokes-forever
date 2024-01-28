@@ -29,9 +29,9 @@ public class DialogController : IScreenController
     {
         foreach (var dialog in _dialogData)
         {
-            if (_dialogsByKey.TryGetValue(dialog.Key, out var dialogList))
+            if (_dialogsByKey.ContainsKey(dialog.Key))
             {
-                dialogList.Add(dialog);
+                _dialogsByKey[dialog.Key].Add(dialog);
                 continue;
             }
             _dialogsByKey[dialog.Key] = new List<DialogData>{ dialog };
@@ -67,7 +67,8 @@ public class DialogController : IScreenController
     {
         int randomDialogChosen = Random.Range(0, _dialogsByType[DialogType.Protagonist_Random.ToString()].Count);
         string dialogKey =  _dialogsByType[DialogType.Protagonist_Random.ToString()][randomDialogChosen].Key;
-        return _dialogsByKey[dialogKey];
+        var dialogData = _dialogsByKey[dialogKey];
+        return dialogData;
     }
 
     public DialogData TryGetNextDialog(string key, int currentDialogStep)

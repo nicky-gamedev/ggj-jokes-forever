@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using JetBrains.Annotations;
@@ -22,6 +23,8 @@ public class DialogScreen : UIScreen<DialogController>
     private Coroutine _dialogRoutine;
     private List<DialogData> _currentDialog = new();
     private int _currentDialogStep;
+
+    public Action<DialogData> OnDialogCompleted;
     public override void Init<T>(T controller)
     {
         GetDialogData();
@@ -52,9 +55,15 @@ public class DialogScreen : UIScreen<DialogController>
                 StopCoroutine(_dialogRoutine);
             }
             _currentDialogStep = 0;
-            _currentDialog = Controller.GetRandomDialog();
+            List<DialogData> randomDialog = new(Controller.GetRandomDialog());
+            _currentDialog = randomDialog;
             ShowDialog();
         }
+    }
+
+    public bool IsDialogActive()
+    {
+        return Controller.HasActiveDialog();
     }
 
     private void ShowDialog()
@@ -67,6 +76,10 @@ public class DialogScreen : UIScreen<DialogController>
     private void HideDialog()
     {
         Controller.CompleteDialog(_currentDialog);
+        if (_currentDialog.Count > 0)
+        {
+            OnDialogCompleted?.Invoke(_currentDialog[_currentDialogStep]);
+        }
         _currentDialogStep = 0;
         _currentDialog.Clear();
         _dialogText.text = string.Empty;
