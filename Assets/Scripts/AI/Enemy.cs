@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using DG.Tweening;
 using UnityEngine;
 using UnityEngine.AI;
@@ -8,8 +9,19 @@ public class Enemy : MonoBehaviour
     [SerializeField] private CharacterController _character;
     [SerializeField] private EnemyStateMachine _enemyStateMachine;
     [SerializeField] private NavMeshAgent _agent;
-    private string _state;
+    [SerializeField] private Health _health;
+    
+    [SerializeField] private string _state;
     public bool gotHurt;
+    public WeaponProjectileManager ProjectileManager;
+    public Melee Melee;
+
+    public Action OnDeath;
+
+    private void Awake()
+    {
+        _health.OnHealthDepleted += StartToDie;
+    }
 
     private void Update()
     {
@@ -41,5 +53,28 @@ public class Enemy : MonoBehaviour
     public bool IsNavigating()
     {
         return _agent.hasPath;
+    }
+
+    public bool IsMoving()
+    {
+        return _agent.velocity.magnitude > 0;
+    }
+
+    public void CancelPath()
+    {
+        _agent.ResetPath();
+    }
+
+    private void StartToDie()
+    {
+        StartCoroutine(Die());
+        _health.OnHealthDepleted -= StartToDie;
+    }
+
+    private IEnumerator Die()
+    {
+        OnDeath?.Invoke();
+        yield return new WaitForSeconds(1);
+        Destroy(this.gameObject);
     }
 }
