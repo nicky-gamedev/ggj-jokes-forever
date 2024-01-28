@@ -216,7 +216,7 @@ MonoBehaviour:
   _inputReader: {fileID: 7259332121322415739}
   _cam: {fileID: 0}
   _controller: {fileID: 2732395417343622423}
-  _speed: 6
+  _speed: 12
 --- !u!114 &7259332121322415739
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -284,6 +284,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _screenManager: {fileID: 0}
   _timeToSpeak: 15
+  _weaponBase: {fileID: 0}
+  _jokesToGainAmmo: 3
+  _ammoGain: 5
 --- !u!114 &3414105768957829100
 MonoBehaviour:
   m_ObjectHideFlags: 0
