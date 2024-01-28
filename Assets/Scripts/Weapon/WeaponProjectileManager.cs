@@ -9,7 +9,6 @@ public class WeaponProjectileManager : MonoBehaviour
     [SerializeField] private int defaultSize;
     [SerializeField] private int maxSize;
     [SerializeField] private Vector3 offset;
-    [SerializeField] private WeaponBase _weaponBase;
 
     
 
