@@ -295,7 +295,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 673520b544314ed59a3cf0c0add72a78, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _projectilePrefab: {fileID: 5238809879703561123, guid: ee9c1223d0af3eb418bbe8415e7b6dac,
+  _projectilePrefab: {fileID: 5238809879703561123, guid: 0630ec10edb14e34f858838ac0c9089a,
     type: 3}
   defaultSize: 10
   maxSize: 100
