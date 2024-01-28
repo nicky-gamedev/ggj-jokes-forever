@@ -65,7 +65,7 @@ public class EnemyStateMachine : MonoBehaviour
             }
             else if (hasProjectileAttack)
             {
-                enemy.ProjectileManager.CreateProjectile(enemy.transform.forward, enemy.transform.position);
+                enemy.ProjectileManager.CreateProjectile(enemy.transform.forward, enemy.transform.position + enemy.transform.forward);
             }
             nextAttackingTime = attackingCooldown + Time.time;
         }
