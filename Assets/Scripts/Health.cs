@@ -6,7 +6,8 @@ public class Health : MonoBehaviour
     [SerializeField] private int _amount;
     public int Amount => _amount;
     public event Action OnHealthDepleted = delegate {};
-
+    
+    
     public event Action OnHealthReduced;
     public void AddHealth(int amount)
     {
