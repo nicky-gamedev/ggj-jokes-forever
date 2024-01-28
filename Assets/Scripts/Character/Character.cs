@@ -10,6 +10,6 @@ public class Character : MonoBehaviour
 
     private void Awake()
     {
-        _health.OnHealthDepleted += (() => { Debug.Log("dead!!!!"); });
+        _health.OnHealthDepleted += (() => {  });
     }
 }

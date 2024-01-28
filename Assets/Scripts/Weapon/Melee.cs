@@ -9,6 +9,7 @@ public class Melee : WeaponBase
     [SerializeField] private float meleeAnimationTime;
     [SerializeField] private WeaponMeleeManager _meleeManager;
     [SerializeField] private int _damage;
+    [SerializeField] private ParticleSystem _particleSystem;
     private void OnEnable()
     {
         _meleeManager.SetDamage(_damage);
@@ -27,6 +28,7 @@ public class Melee : WeaponBase
     IEnumerator ExecuteMelee()
     {
         meleeCollider.gameObject.SetActive(true);
+        _particleSystem.Play();
         yield return new WaitForSeconds(meleeAnimationTime);
         meleeCollider.gameObject.SetActive(false);
     }
