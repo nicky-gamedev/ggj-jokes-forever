@@ -10,8 +10,9 @@ GameObject:
   m_Component:
   - component: {fileID: 811720205970823425}
   - component: {fileID: 4704576942224180169}
+  - component: {fileID: 1727322021537866511}
   m_Layer: 8
-  m_Name: Cube
+  m_Name: MeeleCollider
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -53,6 +54,18 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &1727322021537866511
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5557786367271869561}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 173616b8edc744d28dc444e47efbc5d3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &6231349302820825942
 GameObject:
   m_ObjectHideFlags: 0
@@ -71,6 +84,7 @@ GameObject:
   - component: {fileID: 5537326421596265635}
   - component: {fileID: 6595125748250174057}
   - component: {fileID: 3414105768957829100}
+  - component: {fileID: 8847723349464605055}
   m_Layer: 8
   m_Name: Player
   m_TagString: Untagged
@@ -237,6 +251,7 @@ MonoBehaviour:
   _interaction: {fileID: 748063919047563596}
   _lookAtCamera: {fileID: 3812162120465063319}
   _movement: {fileID: 3369721905973279666}
+  _health: {fileID: 3414105768957829100}
 --- !u!114 &6595125748250174057
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -250,6 +265,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _screenManager: {fileID: 0}
+  _timeToSpeak: 15
 --- !u!114 &3414105768957829100
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -263,6 +279,21 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _amount: 100
+--- !u!114 &8847723349464605055
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6231349302820825942}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a0eb74e8eedfe8046b8b501827dab53c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _animator: {fileID: 0}
+  _weapon: {fileID: 0}
+  _inputReader: {fileID: 7259332121322415739}
 --- !u!1 &7427766177635107143
 GameObject:
   m_ObjectHideFlags: 0
