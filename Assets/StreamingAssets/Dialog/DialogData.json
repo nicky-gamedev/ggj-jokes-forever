@@ -1,0 +1,86 @@
+[
+  {
+    "dialog_key": "Welcome_01",
+    "dialog_type": "Narrative",
+    "dialog_text": "Is this real?",
+    "dialog_appear_time": 2,
+    "index": 0
+  },
+  {
+    "dialog_key": "Welcome_01",
+    "dialog_type": "Narrative",
+    "dialog_text": "People are laughing at my jokes! Finally!",
+    "dialog_appear_time": 3,
+    "index": 1
+  },
+  {
+    "dialog_key": "Welcome_01",
+    "dialog_type": "Narrative",
+    "dialog_text": "Wait...",
+    "dialog_appear_time": 1,
+    "index": 2
+  },
+  {
+    "dialog_key": "Welcome_01",
+    "dialog_type": "Narrative",
+    "dialog_text": "They are ALIENSS!!",
+    "dialog_appear_time": 2,
+    "index": 3
+  },
+  {
+    "dialog_key": "Random_Go",
+    "dialog_type": "Protagonist_Random",
+    "dialog_text": "Why did the clown keep walking forward?",
+    "dialog_appear_time": 4,
+    "index": 0
+  },
+  {
+    "dialog_key": "Random_Go",
+    "dialog_type": "Protagonist_Random",
+    "dialog_text": "Because he shoes to go. HAHA!",
+    "dialog_appear_time": 2,
+    "index": 1
+  },
+  {
+    "dialog_key": "Random_Fight",
+    "dialog_type": "Protagonist_Random",
+    "dialog_text": "Why did clown smash robot?",
+    "dialog_appear_time": 4,
+    "index": 0
+  },
+  {
+    "dialog_key": "Random_Fight",
+    "dialog_type": "Protagonist_Random",
+    "dialog_text": "Because his jokes fell flat, not his punches! HAHA!",
+    "dialog_appear_time": 2,
+    "index": 1
+  },
+  {
+    "dialog_key": "Random_01",
+    "dialog_type": "Protagonist_Random",
+    "dialog_text": "Why do Aliens laugh at my jokes?",
+    "dialog_appear_time": 4,
+    "index": 0
+  },
+  {
+    "dialog_key": "Random_01",
+    "dialog_type": "Protagonist_Random",
+    "dialog_text": "Because they don't land on Earth... HAHA!",
+    "dialog_appear_time": 2,
+    "index": 1
+  },
+  {
+    "dialog_key": "Random_02",
+    "dialog_type": "Protagonist_Random",
+    "dialog_text": "Why did the clown kick the robot in the balls?",
+    "dialog_appear_time": 4,
+    "index": 0
+  },
+  {
+    "dialog_key": "Random_02",
+    "dialog_type": "Protagonist_Random",
+    "dialog_text": "Because he had balls of steel! HAHA!",
+    "dialog_appear_time": 2,
+    "index": 1
+  }
+]
