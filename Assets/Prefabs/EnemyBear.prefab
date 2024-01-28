@@ -143,6 +143,7 @@ MonoBehaviour:
   meleeAnimationTime: 2
   _meleeManager: {fileID: 1746276231358574846}
   _damage: 20
+  _particleSystem: {fileID: 1749986417296195371}
 --- !u!114 &3668541902098533958
 MonoBehaviour:
   m_ObjectHideFlags: 0

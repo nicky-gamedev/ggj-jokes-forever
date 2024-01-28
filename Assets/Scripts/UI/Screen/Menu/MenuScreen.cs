@@ -27,7 +27,7 @@ public class MenuScreen : MonoBehaviour
         _playButton.onClick.AddListener(OnPlayButtonPressed);
         _creditsButton.onClick.AddListener(OnCreditsButtonPressed);
         _exitButton.onClick.AddListener(OnExitButtonPressed);
-        _optionsButton.onClick.AddListener(OnOptionsButtonPressed);
+        //_optionsButton.onClick.AddListener(OnOptionsButtonPressed);
         foreach (var backToMenuButton in _backToMenu)
         {
             backToMenuButton.onClick.AddListener(BackToMenuButtonPressed);
@@ -39,7 +39,7 @@ public class MenuScreen : MonoBehaviour
         _playButton.onClick.RemoveListener(OnPlayButtonPressed);
         _creditsButton.onClick.RemoveListener(OnCreditsButtonPressed);
         _exitButton.onClick.RemoveListener(OnExitButtonPressed);
-        _optionsButton.onClick.RemoveListener(OnOptionsButtonPressed);
+        //_optionsButton.onClick.RemoveListener(OnOptionsButtonPressed);
     }
     
 
