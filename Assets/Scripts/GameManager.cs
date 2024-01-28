@@ -6,7 +6,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] 
     private ScreenManager _screenManager;
     [SerializeField] 
-    private TitleScreen _titleScreen;
+    public TitleScreen _titleScreen;
     [SerializeField] 
     private Health _characterHealth;
 

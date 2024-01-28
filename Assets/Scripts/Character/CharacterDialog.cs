@@ -67,7 +67,7 @@ public class CharacterDialog : MonoBehaviour
         }
 
         if (_currentJokes <= _jokesToGainAmmo) return;
-        AudioManager.Instance.PlayRandom("laugh_",0);
+        AudioManager.Instance.PlayOneShot("laugh_1",0);
         _weaponBase.CurrentAmmo.AddAmmo(_ammoGain);
         _currentJokes = 0;
     }
