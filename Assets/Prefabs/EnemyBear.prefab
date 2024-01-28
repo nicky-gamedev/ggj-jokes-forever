@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 5279634751318233741}
   - component: {fileID: 8793717079912188280}
   - component: {fileID: 3668541902098533958}
+  - component: {fileID: 1529258022575774639}
   - component: {fileID: 6953349609729572767}
   m_Layer: 0
   m_Name: EnemyBear
@@ -154,6 +155,21 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _amount: 25
+--- !u!114 &1529258022575774639
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3955811043601454326}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d771ed09db81c2b49b497d73e4f235a4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _animator: {fileID: 7420265854143251410}
+  _enemy: {fileID: 6030907108001349945}
+  _health: {fileID: 3668541902098533958}
 --- !u!54 &6953349609729572767
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -192,6 +208,7 @@ GameObject:
   - component: {fileID: 6597361674998821204}
   - component: {fileID: 8398663155173658613}
   - component: {fileID: 8044312808683053393}
+  - component: {fileID: 7420265854143251410}
   m_Layer: 0
   m_Name: View
   m_TagString: Untagged
@@ -278,6 +295,27 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6e16d309484a1024e960b194b6075e0c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!95 &7420265854143251410
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6314837457313378745}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: ead83e5bd225f6e48af5b7b03f198c0b, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &8897501168469559446
 GameObject:
   m_ObjectHideFlags: 0
