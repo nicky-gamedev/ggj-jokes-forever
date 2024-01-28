@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using DG.Tweening;
 using UnityEngine;
 using UnityEngine.AI;
@@ -15,12 +16,11 @@ public class Enemy : MonoBehaviour
     public WeaponProjectileManager ProjectileManager;
     public Melee Melee;
 
+    public Action OnDeath;
+
     private void Awake()
     {
-        _health.OnHealthDepleted += () =>
-        {
-            Destroy(this.gameObject);
-        };
+        _health.OnHealthDepleted += StartToDie;
     }
 
     private void Update()
@@ -55,13 +55,26 @@ public class Enemy : MonoBehaviour
         return _agent.hasPath;
     }
 
+    public bool IsMoving()
+    {
+        return _agent.velocity.magnitude > 0;
+    }
+
     public void CancelPath()
     {
         _agent.ResetPath();
     }
 
-    private void OnDestroy()
+    private void StartToDie()
     {
-        _health.OnHealthDepleted -= () => { Destroy(this.gameObject); };
+        StartCoroutine(Die());
+        _health.OnHealthDepleted -= StartToDie;
+    }
+
+    private IEnumerator Die()
+    {
+        OnDeath?.Invoke();
+        yield return new WaitForSeconds(1);
+        Destroy(this.gameObject);
     }
 }
