@@ -7063,10 +7063,20 @@ PrefabInstance:
       propertyPath: _cam
       value: 
       objectReference: {fileID: 2091780490}
+    - target: {fileID: 6153214040709071256, guid: f4392d102b1f24c44bb197f12c4048d8,
+        type: 3}
+      propertyPath: m_CastShadows
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6231349302820825942, guid: f4392d102b1f24c44bb197f12c4048d8,
         type: 3}
       propertyPath: m_Name
       value: Player
+      objectReference: {fileID: 0}
+    - target: {fileID: 6595125748250174057, guid: f4392d102b1f24c44bb197f12c4048d8,
+        type: 3}
+      propertyPath: _timeToSpeak
+      value: 15
       objectReference: {fileID: 0}
     - target: {fileID: 6595125748250174057, guid: f4392d102b1f24c44bb197f12c4048d8,
         type: 3}
