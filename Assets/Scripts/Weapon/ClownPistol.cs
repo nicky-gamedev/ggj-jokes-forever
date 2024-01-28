@@ -12,6 +12,9 @@ public class ClownPistol : WeaponBase
     [SerializeField] private float meleeAnimationTime;
     [SerializeField] private int _damage;
 
+    public Action OnMeeleAttack;
+    public Action OnShootAttack;
+
     private void OnEnable()
     {
        _inputReader.ShootEvent += Fire;
@@ -37,6 +40,7 @@ public class ClownPistol : WeaponBase
         if (CurrentAmmo.HasAmmo)
         {
             CurrentAmmo.AddAmmo(-1);
+            OnShootAttack?.Invoke();
             _projectileManager.CreateProjectile(Camera.main.transform.forward, Camera.main.ViewportToWorldPoint(Vector3.one / 2f));
         }
     }
@@ -49,6 +53,7 @@ public class ClownPistol : WeaponBase
     IEnumerator ExecuteMelee()
     {
         meleeCollider.gameObject.SetActive(true);
+        OnMeeleAttack?.Invoke();
         yield return new WaitForSeconds(meleeAnimationTime);
         meleeCollider.gameObject.SetActive(false);
     }

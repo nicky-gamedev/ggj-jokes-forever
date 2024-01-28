@@ -11,6 +11,8 @@ public class WeaponProjectileManager : MonoBehaviour
     [SerializeField] private Vector3 offset;
     [SerializeField] private WeaponBase _weaponBase;
 
+    
+
     private void Awake()
     {
         _objectPool = new GameObjectPool(_projectilePrefab, defaultSize, maxSize);
