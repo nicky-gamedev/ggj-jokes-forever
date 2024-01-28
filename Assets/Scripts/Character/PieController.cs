@@ -34,6 +34,7 @@ public class PieController : MonoBehaviour
         _gun.gameObject.SetActive(false);
         _pie.gameObject.SetActive(true);
         yield return new WaitForSeconds(1f);
+        AudioManager.Instance.PlayOneShot("pie", 0);
         _splashScreen.color = Color.white;
         _pie.gameObject.SetActive(false);
         _gun.gameObject.SetActive(true);
@@ -41,6 +42,7 @@ public class PieController : MonoBehaviour
         {
             _weapon.CurrentAmmo.AddAmmo(_ammoReward);
             _health.AddHealth(_healthReward);
+            AudioManager.Instance.PlayOneShot("reload", 0);
         };
     }
 }

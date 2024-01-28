@@ -32,6 +32,7 @@ public class ClownPistol : WeaponBase
     private void Awake()
     {
         OnWeaponFired += OnShoot;
+        OnWeaponFired += () => AudioManager.Instance.PlayOneShot("shot", 0);
         CurrentAmmo = new ClownPistolAmmo(2);
     }
 

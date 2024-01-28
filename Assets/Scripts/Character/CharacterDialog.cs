@@ -9,6 +9,11 @@ public class CharacterDialog : MonoBehaviour
     private ScreenManager _screenManager;
     [SerializeField] 
     private float _timeToSpeak;
+    [SerializeField] 
+    private WeaponBase _weaponBase;
+    [SerializeField] private int _jokesToGainAmmo = 3;
+    private int _currentJokes = 0;
+    [SerializeField] private int _ammoGain = 5;
     
     private DialogScreen _dialogScreen;
 
@@ -37,6 +42,7 @@ public class CharacterDialog : MonoBehaviour
     {
         _currentTimeToSpeakAgain = 0;
         _dialogScreen.ShowCharacterRandomDialog();
+        _currentJokes++;
     }
     
     private void OnDialogCompleted(DialogData dialog)
@@ -58,6 +64,10 @@ public class CharacterDialog : MonoBehaviour
                 ActivateRandomDialog();
             }
         }
+
+        if (_currentJokes <= _jokesToGainAmmo) return;
+        _weaponBase.CurrentAmmo.AddAmmo(_ammoGain);
+        _currentJokes = 0;
     }
     
     
